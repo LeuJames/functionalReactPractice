@@ -1,36 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import PersonCard from './Components/PersonCard'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import UserForm from './Components/UserForm';
+import FormData from './Components/FormData'
 
 function App() {
+  const [ state, setState] = useState ({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   return (
     <div className="App">
-      <div>
-        <PersonCard 
-        firstName="Jane" 
-        lastName="Doe"
-        age={45}
-        hairColor = "Black"
-        />
-        <PersonCard 
-        firstName="John" 
-        lastName="Smith"
-        age={88}
-        hairColor = "Brown"
-        />
-        <PersonCard 
-        firstName="Milard" 
-        lastName="Fillmore"
-        age={50}
-        hairColor = "Brown"
-        />
-        <PersonCard 
-        firstName="Maria" 
-        lastName="Smith"
-        age={62}
-        hairColor = "Brown"
-        />
-      </div>
+      <UserForm
+        inputs = {state} 
+        setInputs ={setState}
+      />
+      <FormData
+        data = {state}
+      />
     </div>
   );
 }
